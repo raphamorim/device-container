@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Phone Simulator</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+</head>
+<body>
+
+<h1>Device Simulator</h1>
+<h2>A component to simulate a device layout</h2>
+
+<div class="selectDevice">
+ <label>
+    <select>
+        <option selected>iOS - iPhone 5s </option>
+        <option>Android - Galaxy Nexus 6</option>
+        <option>Windows Phone - Lumia 1020</option>
+    </select>
+</label>
+</div>
+
+<div id="phone">
+	<div id="box">
+	  <div id="header">
+	  	<div id="container"></div>
+	  	<span class="entypo-progress-1"></span>
+	  </div>
+	  <div class="unlock"></div>
+	</div>
+</div>
+
+<script src="http://fb.me/react-0.12.2.min.js"></script>
+<script type="text/javascript">
+	var HelloMessage = React.createClass({displayName: "Mobdiq",
+  		render: function() {
+    		return React.createElement("div", null, "Welcome ", this.props.name);
+  		}
+	});
+
+	React.render(
+		React.createElement(HelloMessage, {name: "Raphael"}), 
+		document.getElementById('container')
+	);
+	</script>
+</body>
+</html>
