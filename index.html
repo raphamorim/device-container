@@ -3,6 +3,7 @@
 <head>
 	<title>Phone Simulator</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/phone.css">
 </head>
 <body>
 
@@ -19,28 +20,29 @@
 </label>
 </div>
 
-<div id="phone">
-	<div id="box">
-	  <div id="header">
-	  	<div id="container"></div>
-	  	<span class="entypo-progress-1"></span>
+<div class="phone">
+	<div class="box">
+	  <div class="header">
+	  	<div class="container"></div>
 	  </div>
 	  <div class="unlock"></div>
 	</div>
 </div>
 
-<script src="http://fb.me/react-0.12.2.min.js"></script>
+<script src="assets/js/react-0.12.2.min.js"></script>
+<script src="assets/js/devices.js"></script>
 <script type="text/javascript">
-	var HelloMessage = React.createClass({displayName: "Mobdiq",
-  		render: function() {
-    		return React.createElement("div", null, "Welcome ", this.props.name);
-  		}
-	});
 
 	React.render(
-		React.createElement(HelloMessage, {name: "Raphael"}), 
-		document.getElementById('container')
+		React.createElement(device.android.header(), {text: "Raphael"}), 
+		document.querySelector('.container')
 	);
-	</script>
+
+	React.render(
+		React.createElement(device.android.header(), {text: "Raphael"}), 
+		document.querySelector('.container')
+	);
+
+</script>
 </body>
 </html>
