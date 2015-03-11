@@ -47,7 +47,11 @@
   min-width:220px;
   padding: 10px;
   font-size:18px;
-  position:absolute;
+  position:relative;
   background:rgba(1,1,1,0.5);
   color:#fff;
+}
+
+.phone .body {
+  margin: 10px;
 }
