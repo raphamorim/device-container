@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>Device Simulator</h1>
+<h1>Device Component</h1>
 <h2>A component to simulate a device layout</h2>
 
 <div class="selectDevice">
@@ -23,25 +23,17 @@
 <div class="phone">
 	<div class="box">
 	  <div class="header">
-	  	<div class="container"></div>
+
+	  	<!-- <div class="container"></div> -->
 	  </div>
 	  <div class="body"></div>
 	</div>
 </div>
 
-<script src="assets/js/react-0.12.2.min.js"></script>
-<script src="assets/js/devices.js"></script>
+<script type="text/javascript" src="assets/js/react-0.12.2.min.js"></script>
+<script type="text/javascript" src="dist/device-component.js"></script>
 <script type="text/javascript">
 
-	React.render(
-		React.createElement(device.android.header(), {text: "Raphael"}), 
-		document.querySelector('.container')
-	);
-
-	React.render(
-		React.createElement(device.android.body(), {text: "Raphael"}), 
-		document.querySelector('.body')
-	);
 
 </script>
 </body>
