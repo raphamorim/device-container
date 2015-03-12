@@ -3,7 +3,7 @@ var data = {};
 var Header = React.createClass({
   render: function() {
     return (
-      <div className="header" data={this.props.data} >
+      <div className="content" data={this.props.data} >
         Hello, world! I am a Header.
       </div>
     );
@@ -13,7 +13,7 @@ var Header = React.createClass({
 var Body = React.createClass({
   render: function() {
     return (
-      <div className="body">
+      <div className="content">
         Hello, world! I am a Body.
       </div>
     );
@@ -22,5 +22,10 @@ var Body = React.createClass({
 
 React.render(
   <Header data={data} />,
-  document.querySelector('.box')
+  document.querySelector('.header')
+);
+
+React.render(
+  <Body />,
+  document.querySelector('.body')
 );

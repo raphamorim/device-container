@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 gulp.task('build', function() {
-    gulp.src('device-component.jsx')
+    gulp.src('./src/device-component.jsx')
         .pipe(react({harmony: true}))
         .pipe(gulp.dest('dist'));
 });
