@@ -39,19 +39,65 @@
   width:240px;
   height:400px;
   padding:0;
+  font-family: 'Roboto';
   overflow:hidden;  
-  background: rgb(255,255,255); 
+  background: #FFF;
+  overflow-y: scroll; 
 }
 
+
+/* Header */
 .phone .header {
   min-width:220px;
   padding: 10px;
   font-size:18px;
   position:relative;
-  background:rgba(1,1,1,0.5);
+  background:#11B1C2;
   color:#fff;
+  text-align: center;
+  line-height: 0.3em;
+}
+.phone .header h2 {
+  font-size: 34px;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+.phone .header h6 {
+  font-size: 12px;
+  margin-top: 10px;
+  letter-spacing: 0.05em;
 }
 
-.phone .body {
-  margin: 10px;
+/* about */
+.phone .about {
+  margin: 0;
+}
+.phone .bar {
+  margin: 20px 10px -10px 10px;
+}
+.phone .about .profile {
+  width: 40px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+.phone .about h3 {
+  font-size: 14px;
+}
+.phone .about h6 {
+  font-size: 12px;
+  color: #666;
+  font-weight: 300;
+  margin-left: 52px;
+  margin-top: -9px;
+}
+.phone .about .midias img {
+  width: 100%;
+}
+.phone .about .description {
+  color: #999;
+  line-height: 1.2em;
+  margin: 10px 10px -10px 10px;
+  font-size: 12px;
 }

@@ -1,31 +1,55 @@
-var data = {};
-
 var Header = React.createClass({
   render: function() {
     return (
-      <div className="content" data={this.props.data} >
-        Hello, world! I am a Header.
+      <div className="content">
+        <h6>INDIQUE E GANHE</h6>
+        <h2>R$ {this.props.anuncio.valor}</h2>
       </div>
     );
   }
 });
 
-var Body = React.createClass({
+var About = React.createClass({
   render: function() {
     return (
       <div className="content">
-        Hello, world! I am a Body.
+        <div className="bar">
+          <img className="profile" src={'http://mobdiq.craft.dev:81/' + this.props.anunciante.logo.src['2x']}/>
+          <h3>{this.props.anuncio.rotulo}</h3>
+          <h6>{this.props.anuncio.anuncianteKey}</h6>
+        </div>
+        <div className="midias">
+          <img src={'http://mobdiq.craft.dev:81/' + this.props.anuncio.midias[0].src['2x']}/>
+        </div>
+        <div className="description">
+          {this.props.anuncio.descricao}
+        </div>
+      </div>
+    );
+  }
+});
+
+var Features = React.createClass({
+  render: function() {
+    return (
+      <div className="content">
+        Dor
       </div>
     );
   }
 });
 
 React.render(
-  <Header data={data} />,
+  <Header anuncio={anuncio} />,
   document.querySelector('.header')
 );
 
 React.render(
-  <Body />,
-  document.querySelector('.body')
+  <About anuncio={anuncio} anunciante={anunciante} />,
+  document.querySelector('.about')
+);
+
+React.render(
+  <Features anuncio={anuncio} />,
+  document.querySelector('.features')
 );

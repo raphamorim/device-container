@@ -9,12 +9,12 @@ body {
     width: 820px;
 }
 
-h1, h2 {
+body>h1, h2 {
     text-align: center;
     color: #FFF;
 }
 
-h2 {
+body>h2 {
     background: #5c98cd;
     padding: 5px;
     width: auto;
