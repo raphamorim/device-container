@@ -31,10 +31,27 @@ var About = React.createClass({displayName: "About",
 
 var Features = React.createClass({displayName: "Features",
   render: function() {
+    var rows = [];
+    this.props.anuncio.secoes.forEach(function(secao) {
+        if (secao.tipo == 'detalhamento') {
+            var lines = [];
+            secao.linhas.forEach(function(linha){
+              lines.push(React.createElement("p", null, React.createElement("strong", null, linha.detalhe), ": ", linha.descricao))
+            });
+            
+            rows.push(React.createElement("h3", null, secao.rotulo));
+            rows.push(lines);            
+        } else if (secao.tipo == 'mapa') {
+            rows.push(
+              React.createElement("h3", null, "Aqui é o mapa")
+            );
+        }
+    });
+
     return (
       React.createElement("div", {className: "content"}, 
-        "Dor"
-      )
+        rows
+      )      
     );
   }
 });

@@ -101,3 +101,11 @@
   margin: 10px 10px -10px 10px;
   font-size: 12px;
 }
+
+/* Features */
+.phone .features {
+  margin: 20px 10px -10px 10px;
+}
+.phone .features h3 {
+  font-size: 14px;
+}

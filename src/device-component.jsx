@@ -31,10 +31,26 @@ var About = React.createClass({
 
 var Features = React.createClass({
   render: function() {
+    var rows = [];
+    this.props.anuncio.secoes.forEach(function(secao) {
+        if (secao.tipo == 'detalhamento') {
+            var lines = [];
+            secao.linhas.forEach(function(linha){
+              lines.push(<p><strong>{linha.detalhe}</strong>: {linha.descricao}</p>)
+            });
+            
+            rows.push(<h3>{secao.rotulo}</h3><div>{lines}</div>);
+        } else if (secao.tipo == 'mapa') {
+            rows.push(
+              <h3>Aqui é o mapa</h3>
+            );
+        }
+    });
+
     return (
       <div className="content">
-        Dor
-      </div>
+        {rows}
+      </div>      
     );
   }
 });
