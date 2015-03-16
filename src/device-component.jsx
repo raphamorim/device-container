@@ -11,12 +11,16 @@ var Header = React.createClass({
 
 var About = React.createClass({
   render: function() {
+    var anuncianteKey = this.props.anuncio.anuncianteKey,
+        anunciante = anuncianteKey.split(':')[1];
+
+
     return (
       <div className="content">
         <div className="bar">
           <img className="profile" src={'http://mobdiq.craft.dev:81/' + this.props.anunciante.logo.src['2x']}/>
           <h3>{this.props.anuncio.rotulo}</h3>
-          <h6>{this.props.anuncio.anuncianteKey}</h6>
+          <h6>{anunciante}</h6>
         </div>
         <div className="midias">
           <img src={'http://mobdiq.craft.dev:81/' + this.props.anuncio.midias[0].src['2x']}/>
@@ -36,21 +40,32 @@ var Features = React.createClass({
         if (secao.tipo == 'detalhamento') {
             var lines = [];
             secao.linhas.forEach(function(linha){
-              lines.push(<p><strong>{linha.detalhe}</strong>: {linha.descricao}</p>)
+              lines.push(<p><div className="detail">{linha.detalhe}</div><div className="description">{linha.descricao}</div></p>)
             });
             
-            rows.push(<h3>{secao.rotulo}</h3><div>{lines}</div>);
+            rows.push(<h3>{secao.rotulo}</h3>);
+            rows.push(lines);
         } else if (secao.tipo == 'mapa') {
-            rows.push(
-              <h3>Aqui é o mapa</h3>
-            );
+            rows.push(<h3 className="map">Espaço para o mapa</h3>);
         }
     });
 
     return (
       <div className="content">
         {rows}
+        <span className="break"></span>
       </div>      
+    );
+  }
+});
+
+var Terms = React.createClass({
+  render: function() {
+    return (
+      <div className="content">
+        <h3>Regras da indicação</h3>
+        <p>- {this.props.anuncio.condicoes}</p>
+      </div>
     );
   }
 });
@@ -68,4 +83,9 @@ React.render(
 React.render(
   <Features anuncio={anuncio} />,
   document.querySelector('.features')
+);
+
+React.render(
+  <Terms anuncio={anuncio} />,
+  document.querySelector('.terms')
 );
