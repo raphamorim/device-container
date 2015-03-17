@@ -14,7 +14,6 @@ var About = React.createClass({displayName: "About",
     var anuncianteKey = this.props.anuncio.anuncianteKey,
         anunciante = anuncianteKey.split(':')[1];
 
-
     return (
       React.createElement("div", {className: "content"}, 
         React.createElement("div", {className: "bar"}, 
@@ -70,22 +69,53 @@ var Terms = React.createClass({displayName: "Terms",
   }
 });
 
+var Phone = React.createClass({displayName: "Phone",
+  render: function() {
+    return (
+      React.createElement("div", {className: "box"}, 
+        React.createElement("div", {className: "header"}, 
+          React.createElement(Header, {anuncio: this.props.anuncio})
+        ), 
+        React.createElement("div", {className: "about"}, 
+          React.createElement(About, {anuncio: this.props.anuncio, anunciante: this.props.anunciante})
+        ), 
+        React.createElement("div", {className: "features"}, 
+          React.createElement(Features, {anuncio: this.props.anuncio})
+        ), 
+        React.createElement("div", {className: "terms"}, 
+          React.createElement(Terms, {anuncio: this.props.anuncio})
+        )
+      )
+    );
+  }
+});
+
+var phone = document.querySelectorAll('.phone');
+
 React.render(
-  React.createElement(Header, {anuncio: anuncio}),
-  document.querySelector('.header')
+  React.createElement(Phone, {anuncio: anuncio, anunciante: anunciante}), phone[0]
 );
 
 React.render(
-  React.createElement(About, {anuncio: anuncio, anunciante: anunciante}),
-  document.querySelector('.about')
+  React.createElement(Phone, {anuncio: anuncio, anunciante: anunciante}), phone[1]
 );
 
-React.render(
-  React.createElement(Features, {anuncio: anuncio}),
-  document.querySelector('.features')
-);
+// React.render(
+//   <Header anuncio={anuncio} />,
+//   document.querySelector('.header')
+// );
 
-React.render(
-  React.createElement(Terms, {anuncio: anuncio}),
-  document.querySelector('.terms')
-);
+// React.render(
+//   <About anuncio={anuncio} anunciante={anunciante} />,
+//   document.querySelector('.about')
+// );
+
+// React.render(
+//   <Features anuncio={anuncio} />,
+//   document.querySelector('.features')
+// );
+
+// React.render(
+//   <Terms anuncio={anuncio} />,
+//   document.querySelector('.terms')
+// );

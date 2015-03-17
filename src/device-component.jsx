@@ -14,7 +14,6 @@ var About = React.createClass({
     var anuncianteKey = this.props.anuncio.anuncianteKey,
         anunciante = anuncianteKey.split(':')[1];
 
-
     return (
       <div className="content">
         <div className="bar">
@@ -70,22 +69,53 @@ var Terms = React.createClass({
   }
 });
 
+var Phone = React.createClass({
+  render: function() {
+    return (
+      <div className="box">
+        <div className="header">
+          <Header anuncio={this.props.anuncio} />
+        </div>
+        <div className="about">
+          <About anuncio={this.props.anuncio} anunciante={this.props.anunciante} />
+        </div>
+        <div className="features">
+          <Features anuncio={this.props.anuncio} />
+        </div>
+        <div className="terms">
+          <Terms anuncio={this.props.anuncio} />
+        </div>
+      </div>
+    );
+  }
+});
+
+var phone = document.querySelectorAll('.phone');
+
 React.render(
-  <Header anuncio={anuncio} />,
-  document.querySelector('.header')
+  <Phone anuncio={anuncio} anunciante={anunciante} />, phone[0]
 );
 
 React.render(
-  <About anuncio={anuncio} anunciante={anunciante} />,
-  document.querySelector('.about')
+  <Phone anuncio={anuncio} anunciante={anunciante} />, phone[1]
 );
 
-React.render(
-  <Features anuncio={anuncio} />,
-  document.querySelector('.features')
-);
+// React.render(
+//   <Header anuncio={anuncio} />,
+//   document.querySelector('.header')
+// );
 
-React.render(
-  <Terms anuncio={anuncio} />,
-  document.querySelector('.terms')
-);
+// React.render(
+//   <About anuncio={anuncio} anunciante={anunciante} />,
+//   document.querySelector('.about')
+// );
+
+// React.render(
+//   <Features anuncio={anuncio} />,
+//   document.querySelector('.features')
+// );
+
+// React.render(
+//   <Terms anuncio={anuncio} />,
+//   document.querySelector('.terms')
+// );
