@@ -1,14 +1,19 @@
-var gulp = require('gulp'),
-    react = require('gulp-react'),
-    livereload = require('gulp-livereload');
+var gulp = require("gulp"),
+ 	sourcemaps = require("gulp-sourcemaps"),
+ 	babel = require("gulp-babel"),
+ 	concat = require("gulp-concat"),
+ 	livereload = require('gulp-livereload');
 
-gulp.task('build', function() {
-    gulp.src('./src/device-component.jsx')
-        .pipe(react({harmony: true}))
-        .pipe(gulp.dest('dist'));
+gulp.task("build", function () {
+  return gulp.src(["src/componentes/**/*.js*", "src/*.js*"])
+    .pipe(sourcemaps.init())
+    .pipe(concat("all.js"))
+    .pipe(babel())
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest("dist"));
 });
 
 gulp.task('watch', function() {
   	livereload.listen();
-  	gulp.watch('src/*.jsx', ['build']);
+  	gulp.watch('src/**/*', ['build']);
 });
