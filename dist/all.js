@@ -39,6 +39,22 @@ var Anuncio = React.createClass({
   }
 });
 
+var Device = React.createClass({
+  displayName: "Device",
+
+  propTypes: {
+    children: React.PropTypes.element.isRequired
+  },
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      { className: "Device" },
+      this.props.children
+    );
+  }
+});
+
 var InfoAnuncio = React.createClass({
   displayName: "InfoAnuncio",
 
@@ -119,9 +135,9 @@ var Secoes = React.createClass({
     if (this.props.anuncio.secoes && this.props.anuncio.secoes.length) {
       this.props.anuncio.secoes.forEach(function (secao) {
         if (secao.tipo == "detalhamento") {
-          rows.push(React.createElement(SecoesDetalhamento, { secao: secao }));
+          rows.push(React.createElement(SecaoDetalhamento, { secao: secao }));
         } else if (secao.tipo == "mapa") {
-          rows.push(React.createElement(SecoesMapa, { secao: secao }));
+          rows.push(React.createElement(SecaoMapa, { secao: secao }));
         }
       });
     }
@@ -134,23 +150,28 @@ var Secoes = React.createClass({
   }
 });
 
-var SecoesDetalhamento = React.createClass({
-  displayName: "SecoesDetalhamento",
+var SecaoDetalhamento = React.createClass({
+  displayName: "SecaoDetalhamento",
 
   render: function render() {
     var lines = [];
     this.props.secao.linhas.forEach(function (linha) {
-      lines.push(React.createElement(
-        "p",
-        null,
-        React.createElement(
+      var detalhe;
+      if (linha.detalhe.trim().length) {
+        detalhe = React.createElement(
           "div",
-          { className: "SecoesDetalhamento-detalhe" },
+          { className: "SecaoDetalhamento-detalhe" },
           linha.detalhe
-        ),
+        );
+      }
+
+      lines.push(React.createElement(
+        "div",
+        { className: "SecaoDetalhamento-linha" },
+        detalhe,
         React.createElement(
           "div",
-          { className: "Secoes-descricao" },
+          { className: "SecaoDetalhamento-descricao" },
           linha.descricao
         )
       ));
@@ -158,25 +179,46 @@ var SecoesDetalhamento = React.createClass({
 
     return React.createElement(
       "div",
-      { className: "SecoesDetalhamento" },
+      { className: "SecaoDetalhamento" },
       React.createElement(
         "h3",
-        { className: "SecoesDetalhamento-rotulo" },
+        { className: "SecaoDetalhamento-rotulo" },
         this.props.secao.rotulo
       ),
-      lines
+      React.createElement(
+        "div",
+        { className: "SecaoDetalhamento-caracteristicas" },
+        lines
+      )
     );
   }
 });
 
-var SecoesMapa = React.createClass({
-  displayName: "SecoesMapa",
+var SecaoMapa = React.createClass({
+  displayName: "SecaoMapa",
 
   render: function render() {
-    return React.createElement("img", { className: "SecoesMapa", src: this.props.secao.imagem.src["2x"] });
+    return React.createElement(
+      "div",
+      { className: "SecaoMapa" },
+      React.createElement(
+        "a",
+        { className: "SecaoMapa-link", href: this.props.secao.url, target: "_blank" },
+        React.createElement("img", { className: "SecaoMapa-imagem", src: this.props.secao.imagem.src["2x"] }),
+        React.createElement(
+          "div",
+          { className: "SecaoMapa-texto" },
+          "Como chegar?"
+        )
+      )
+    );
   }
 });
 var phone = document.querySelectorAll(".Phone");
 
-React.render(React.createElement(Anuncio, { anuncio: anuncio, anunciante: anunciante }), phone[0]);
+React.render(React.createElement(
+  Device,
+  null,
+  React.createElement(Anuncio, { anuncio: anuncio, anunciante: anunciante })
+), phone[0]);
 //# sourceMappingURL=all.js.map

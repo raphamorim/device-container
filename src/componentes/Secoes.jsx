@@ -4,9 +4,9 @@ var Secoes = React.createClass({
     if (this.props.anuncio.secoes && this.props.anuncio.secoes.length) {
       this.props.anuncio.secoes.forEach(function(secao) {
           if (secao.tipo == 'detalhamento') {
-            rows.push(<SecoesDetalhamento secao={secao} />);
+            rows.push(<SecaoDetalhamento secao={secao} />);
           } else if (secao.tipo == 'mapa') {
-            rows.push(<SecoesMapa secao={secao} />);
+            rows.push(<SecaoMapa secao={secao} />);
           }
       });
     }
@@ -19,26 +19,38 @@ var Secoes = React.createClass({
   }
 });
 
-var SecoesDetalhamento = React.createClass({ 
+var SecaoDetalhamento = React.createClass({ 
   render: function() {
     var lines = [];
     this.props.secao.linhas.forEach(function(linha){
-      lines.push(<p><div className="SecoesDetalhamento-detalhe">{linha.detalhe}</div><div className="Secoes-descricao" >{linha.descricao}</div></p>)
+      var detalhe;
+      if (linha.detalhe.trim().length){
+        detalhe = <div className="SecaoDetalhamento-detalhe">{linha.detalhe}</div>;
+      }
+
+      lines.push(<div className="SecaoDetalhamento-linha">{detalhe}<div className="SecaoDetalhamento-descricao" >{linha.descricao}</div></div>)
     });
    
     return (
-      <div className="SecoesDetalhamento">
-        <h3 className="SecoesDetalhamento-rotulo">{this.props.secao.rotulo}</h3>
-        {lines}
+      <div className="SecaoDetalhamento">
+        <h3 className="SecaoDetalhamento-rotulo">{this.props.secao.rotulo}</h3>
+        <div className="SecaoDetalhamento-caracteristicas">
+          {lines}
+        </div>
       </div>   
     )
   }
 });
 
-var SecoesMapa = React.createClass({
+var SecaoMapa = React.createClass({
   render: function() {
       return (
-        <img className="SecoesMapa" src={this.props.secao.imagem.src['2x']} />
+        <div className="SecaoMapa">
+            <a className="SecaoMapa-link" href={this.props.secao.url} target="_blank">
+              <img className="SecaoMapa-imagem" src={this.props.secao.imagem.src['2x']} />
+              <div className="SecaoMapa-texto">Como chegar?</div>
+            </a>
+        </div>
       )
   }
 });

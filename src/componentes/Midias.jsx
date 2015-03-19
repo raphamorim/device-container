@@ -19,7 +19,7 @@ var Midias = React.createClass({
 
     return (
         <div className="Midias">
-			{midias}
+			     {midias}
         </div>
     );
   }

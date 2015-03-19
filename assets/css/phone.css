@@ -1,5 +1,5 @@
-/* PHONE *//*
-.Phone {
+/* Phone */
+.Device {
   position:relative;
   left:0;
   right:0;
@@ -12,7 +12,7 @@
   margin-left: 10px;
 }
 
-.Phone:before {
+/*.Device:before {
   content:'';
   position:relative;
   left:0;
@@ -24,7 +24,7 @@
   border-radius:20px;
 }
 
-.Phone:after {
+.Device:after {
   content:'';
   position:relative;
   left:0;
@@ -36,10 +36,11 @@
   border-radius:20px;
 }*/
 
-.Phone {
+/* Anuncio */
+.Anuncio {
   position: relative;
   width:240px;
-  /*height:400px;*/
+  height:400px;
   padding:0;
   font-family: 'Roboto';
   overflow:hidden;  
@@ -47,8 +48,8 @@
   overflow-y: scroll; 
 }
 
-/* Header */
-.Phone-header {
+/* Anuncio-Cabecalho */
+.Anuncio-Cabecalho {
   min-width:220px;
   padding: 10px;
   font-size:18px;
@@ -58,105 +59,126 @@
   text-align: center;
   line-height: 0.3em;
 }
-.Phone-header-value {
+.Anuncio-Cabecalho-titulo {
+  font-size: 12px;
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+.Anuncio-Cabecalho-valor {
   font-size: 34px;
   letter-spacing: 0.05em;
   margin-bottom: 20px;
   font-weight: 400;
 }
-.Phone-header-heading {
-  font-size: 12px;
-  margin-top: 10px;
-  letter-spacing: 0.05em;
-}
-
-/* About */
-.Phone-about {
-  margin: 0;
-}
-.Phone-about-bar {
-  margin: 20px 10px -10px 10px;
-}
-.Phone-about-profile {
-  width: 40px;
-  border-radius: 50%;
-  float: left;
-  margin-right: 10px;
-}
-.Phone-about-title {
-  font-size: 14px;
-}
-.Phone-about-owner {
-  font-size: 12px;
-  color: #666;
-  font-weight: 300;
-  margin-left: 52px;
-  margin-top: -9px;
-}
-.Phone-about-midias img {
-  width: 100%;
-}
-.Phone-about-description {
+.Anuncio-Descricao {
   color: #999;
   line-height: 1.2em;
   margin: 10px 10px -10px 10px;
   font-size: 12px;
 }
 
-/* Features */
-.Phone-features {
+/* InfoAnuncio */
+.InfoAnuncio {
   margin: 20px 10px -10px 10px;
 }
-.Phone-features-title {
-  margin-top: 30px;
-  margin-bottom: -10px;
-  font-size: 14px;
-  clear: both;
-}
-.Phone-features-detail, .Phone-features-description {
+.InfoAnuncio-anuncianteLogo {
+  width: 40px;
+  border-radius: 50%;
   float: left;
+  margin-right: 10px;
+}
+.InfoAnuncio-anuncioRotulo {
+  font-size: 14px;
+}
+.InfoAnuncio-anuncianteNome {
+  font-size: 12px;
+  color: #666;
+  font-weight: 300;
+  margin-left: 52px;
+  margin-top: -9px;
+}
+
+/* Midias */
+.Midias img {
+  width: 100%;
+}
+
+/* Secoes */
+.Secoes {
+  margin: 20px 10px -10px 10px;
+}
+
+/* SecoesDetalhamento */
+.SecaoDetalhamento-rotulo {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.SecaoDetalhamento-detalhe, .SecaoDetalhamento-descricao {
   color: #999;
   font-size: 10px;
   line-height: 1.5em;
 }
-.Phone-features-detail {
+.SecaoDetalhamento-detalhe {
+  display: table-cell;
   width: 30%;
   text-align: right;
   border-right: 1px solid #999;
   padding-right: 4px;
 }
-.Phone-features-description {
-  width: 60%;
+.SecaoDetalhamento-descricao {
+  display: table-cell;
   margin-left: 4px;
   color: #777;
   text-align: left;
+  padding-left: 4px;
 }
-.Phone-features-break {
-  clear: both;
+.SecaoDetalhamento-linha {
+  display: table-row;
 }
-.Phone-features-map {
-  width: 100%;
-  margin-top:15px;
-  border: 2px solid #F8F8F8;
-  box-shadow: 0 0 1px #999;
-  border-radius: 2px;
+.SecaoDetalhamento-caracteristicas {
+  display: table;
 }
 
-/* Terms */
-.Phone-terms {
+/* SecaoMapa */
+.SecaoMapa {
+  border: 2px solid #F8F8F8;
+  box-shadow: 0 0 1px #999;
+  background: #F8F8F8;
+  margin-top: 15px;
+}
+.SecaoMapa-link {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.SecaoMapa-imagem {
+  width: 100%;
+  border-radius: 2px;
+}
+.SecaoMapa-texto {
+  color: #999;
+  text-align: right;
+  padding: 3px;
+  padding-right: 8px;
+  font-size: 12px;
+}
+
+/* RegrasAnuncio */
+.RegrasAnuncio {
   background: #f2f2f2;
   padding: 5px 7px;
   clear: both;
   margin-top: 25px;
 }
-.Phone-terms-title {
+.RegrasAnuncio-rotulo {
   font-size: 14px;
   margin: 0px;
   padding: 0px;
   padding-top: 5px;
   margin-bottom: -8px;
 }
-.Phone-terms-content {
+.RegrasAnuncio-condicoes {
   color: #999;
   line-height: 1.2em; 
   font-size: 10px;
