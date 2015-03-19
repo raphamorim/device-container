@@ -33,7 +33,7 @@ var Anuncio = React.createClass({
       React.createElement(InfoAnuncio, { anuncio: this.props.anuncio, anunciante: this.props.anunciante }),
       React.createElement(Midias, { midias: this.props.anuncio.midias }),
       React.createElement("div", { className: "Anuncio-Descricao", dangerouslySetInnerHTML: { __html: this.props.anuncio.descricao } }),
-      React.createElement(Secoes, { anuncio: this.props.anuncio }),
+      React.createElement(SecoesAnuncio, { anuncio: this.props.anuncio }),
       React.createElement(RegrasAnuncio, { anuncio: this.props.anuncio })
     );
   }
@@ -51,6 +51,127 @@ var Device = React.createClass({
       "div",
       { className: "Device" },
       this.props.children
+    );
+  }
+});
+
+var CabecalhoFormulario = React.createClass({
+  displayName: "CabecalhoFormulario",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      { className: "Formulario-Cabecalho" },
+      "Ganhe ",
+      React.createElement(
+        "span",
+        { className: "Formulario-Cabecalho-valor" },
+        "R$ ",
+        this.props.anuncio.valor
+      )
+    );
+  }
+});
+
+var SecoesFormulario = React.createClass({
+  displayName: "SecoesFormulario",
+
+  render: function render() {
+    var rows = [];
+    if (this.props.anuncio.formulario.secoes && this.props.anuncio.formulario.secoes.length) {
+      this.props.anuncio.formulario.secoes.forEach(function (secao) {
+        rows.push(React.createElement(CamposFormulario, { campos: secao.campos }));
+      });
+    }
+
+    return React.createElement(
+      "div",
+      { className: "SecoesFormulario" },
+      rows
+    );
+  }
+});
+
+var CamposFormulario = React.createClass({
+  displayName: "CamposFormulario",
+
+  render: function render() {
+    var rows = [];
+    if (this.props.campos && this.props.campos.length) {
+      this.props.campos.forEach(function (campo) {
+        if (campo.tipo === "paragrafo") {
+          rows.push(React.createElement(
+            "h2",
+            { className: "CamposFormulario-titulo" },
+            campo.html
+          ));
+        } else if (campo.tipo === "texto") {
+          rows.push(React.createElement(
+            "div",
+            { className: "CamposFormulario-campo" },
+            React.createElement(
+              "h3",
+              { className: "CamposFormulario-campoTitulo" },
+              campo.rotulo
+            ),
+            React.createElement("input", { className: "CamposFormulario-campoInput", id: campo.id, type: "text" })
+          ));
+        } else if (campo.tipo === "telefone") {
+          rows.push(React.createElement(
+            "div",
+            { className: "CamposFormulario-campo" },
+            React.createElement(
+              "h3",
+              { className: "CamposFormulario-campoTitulo" },
+              campo.rotulo
+            ),
+            React.createElement("input", { className: "CamposFormulario-campoInput", id: campo.id, type: "text" })
+          ));
+        } else if (campo.tipo === "email") {
+          rows.push(React.createElement(
+            "div",
+            { className: "CamposFormulario-campo" },
+            React.createElement(
+              "h3",
+              { className: "CamposFormulario-campoTitulo" },
+              campo.rotulo
+            ),
+            React.createElement("input", { className: "CamposFormulario-campoInput", id: campo.id, type: "email" })
+          ));
+        } else if (campo.tipo === "opcoes") {
+          rows.push(React.createElement(
+            "div",
+            { className: "CamposFormulario-campo" },
+            React.createElement(
+              "h3",
+              { className: "CamposFormulario-campoTitulo" },
+              campo.rotulo
+            )
+          ));
+        }
+      });
+    }
+
+    return React.createElement(
+      "div",
+      { className: "CamposFormulario" },
+      rows
+    );
+  }
+});
+
+var Formulario = React.createClass({
+  displayName: "Formulario",
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      { className: "Formulario" },
+      React.createElement(CabecalhoFormulario, { anuncio: this.props.anuncio }),
+      React.createElement(InfoAnuncio, { anuncio: this.props.anuncio, anunciante: this.props.anunciante }),
+      React.createElement("div", { className: "Formulario-linha" }),
+      React.createElement(SecoesFormulario, { anuncio: this.props.anuncio }),
+      React.createElement(RegrasAnuncio, { anuncio: this.props.anuncio })
     );
   }
 });
@@ -127,31 +248,31 @@ var RegrasAnuncio = React.createClass({
     );
   }
 });
-var Secoes = React.createClass({
-  displayName: "Secoes",
+var SecoesAnuncio = React.createClass({
+  displayName: "SecoesAnuncio",
 
   render: function render() {
     var rows = [];
     if (this.props.anuncio.secoes && this.props.anuncio.secoes.length) {
       this.props.anuncio.secoes.forEach(function (secao) {
         if (secao.tipo == "detalhamento") {
-          rows.push(React.createElement(SecaoDetalhamento, { secao: secao }));
+          rows.push(React.createElement(SecaoAnuncioDetalhamento, { secao: secao }));
         } else if (secao.tipo == "mapa") {
-          rows.push(React.createElement(SecaoMapa, { secao: secao }));
+          rows.push(React.createElement(SecaoAnuncioMapa, { secao: secao }));
         }
       });
     }
 
     return React.createElement(
       "div",
-      { className: "Secoes" },
+      { className: "SecoesAnuncio" },
       rows
     );
   }
 });
 
-var SecaoDetalhamento = React.createClass({
-  displayName: "SecaoDetalhamento",
+var SecaoAnuncioDetalhamento = React.createClass({
+  displayName: "SecaoAnuncioDetalhamento",
 
   render: function render() {
     var lines = [];
@@ -160,14 +281,14 @@ var SecaoDetalhamento = React.createClass({
       if (linha.detalhe.trim().length) {
         detalhe = React.createElement(
           "div",
-          { className: "SecaoDetalhamento-detalhe" },
+          { className: "SecaoAnuncioDetalhamento-detalhe" },
           linha.detalhe
         );
       }
 
       lines.push(React.createElement(
         "div",
-        { className: "SecaoDetalhamento-linha" },
+        { className: "SecaoAnuncioDetalhamento-linha" },
         detalhe,
         React.createElement(
           "div",
@@ -179,35 +300,35 @@ var SecaoDetalhamento = React.createClass({
 
     return React.createElement(
       "div",
-      { className: "SecaoDetalhamento" },
+      { className: "SecaoAnuncioDetalhamento" },
       React.createElement(
         "h3",
-        { className: "SecaoDetalhamento-rotulo" },
+        { className: "SecaoAnuncioDetalhamento-rotulo" },
         this.props.secao.rotulo
       ),
       React.createElement(
         "div",
-        { className: "SecaoDetalhamento-caracteristicas" },
+        { className: "SecaoAnuncioDetalhamento-caracteristicas" },
         lines
       )
     );
   }
 });
 
-var SecaoMapa = React.createClass({
-  displayName: "SecaoMapa",
+var SecaoAnuncioMapa = React.createClass({
+  displayName: "SecaoAnuncioMapa",
 
   render: function render() {
     return React.createElement(
       "div",
-      { className: "SecaoMapa" },
+      { className: "SecaoAnuncioMapa" },
       React.createElement(
         "a",
-        { className: "SecaoMapa-link", href: this.props.secao.url, target: "_blank" },
-        React.createElement("img", { className: "SecaoMapa-imagem", src: this.props.secao.imagem.src["2x"] }),
+        { className: "SecaoAnuncioMapa-link", href: this.props.secao.url, target: "_blank" },
+        React.createElement("img", { className: "SecaoAnuncioMapa-imagem", src: this.props.secao.imagem.src["2x"] }),
         React.createElement(
           "div",
-          { className: "SecaoMapa-texto" },
+          { className: "SecaoAnuncioMapa-texto" },
           "Como chegar?"
         )
       )
@@ -221,4 +342,10 @@ React.render(React.createElement(
   null,
   React.createElement(Anuncio, { anuncio: anuncio, anunciante: anunciante })
 ), phone[0]);
+
+React.render(React.createElement(
+  Device,
+  null,
+  React.createElement(Formulario, { anuncio: anuncio, anunciante: anunciante })
+), phone[1]);
 //# sourceMappingURL=all.js.map

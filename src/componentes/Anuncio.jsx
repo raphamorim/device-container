@@ -17,7 +17,7 @@ var Anuncio = React.createClass({
         <InfoAnuncio anuncio={this.props.anuncio} anunciante={this.props.anunciante} />
         <Midias midias={this.props.anuncio.midias}/>
         <div className="Anuncio-Descricao" dangerouslySetInnerHTML={{__html: this.props.anuncio.descricao}} />
-        <Secoes anuncio={this.props.anuncio} />
+        <SecoesAnuncio anuncio={this.props.anuncio} />
         <RegrasAnuncio anuncio={this.props.anuncio} />
       </div>
     );

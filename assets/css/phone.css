@@ -50,7 +50,7 @@
 
 /* Anuncio-Cabecalho */
 .Anuncio-Cabecalho {
-  min-width:220px;
+  width:220px;
   padding: 10px;
   font-size:18px;
   position:relative;
@@ -104,59 +104,59 @@
 }
 
 /* Secoes */
-.Secoes {
+.SecoesAnuncio {
   margin: 20px 10px -10px 10px;
 }
 
 /* SecoesDetalhamento */
-.SecaoDetalhamento-rotulo {
+.SecaoAnuncioDetalhamento-rotulo {
   margin-top: 20px;
   margin-bottom: 5px;
   font-size: 14px;
 }
-.SecaoDetalhamento-detalhe, .SecaoDetalhamento-descricao {
+.SecaoAnuncioDetalhamento-detalhe, .SecaoAnuncioDetalhamento-descricao {
   color: #999;
   font-size: 10px;
   line-height: 1.5em;
 }
-.SecaoDetalhamento-detalhe {
+.SecaoAnuncioDetalhamento-detalhe {
   display: table-cell;
   width: 30%;
   text-align: right;
   border-right: 1px solid #999;
   padding-right: 4px;
 }
-.SecaoDetalhamento-descricao {
+.SecaoAnuncioDetalhamento-descricao {
   display: table-cell;
   margin-left: 4px;
   color: #777;
   text-align: left;
   padding-left: 4px;
 }
-.SecaoDetalhamento-linha {
+.SecaoAnuncioDetalhamento-linha {
   display: table-row;
 }
-.SecaoDetalhamento-caracteristicas {
+.SecaoAnuncioDetalhamento-caracteristicas {
   display: table;
 }
 
 /* SecaoMapa */
-.SecaoMapa {
+.SecaoAnuncioMapa {
   border: 2px solid #F8F8F8;
   box-shadow: 0 0 1px #999;
   background: #F8F8F8;
   margin-top: 15px;
 }
-.SecaoMapa-link {
+.SecaoAnuncioMapa-link {
   text-decoration: none;
   border: none;
   cursor: pointer;
 }
-.SecaoMapa-imagem {
+.SecaoAnuncioMapa-imagem {
   width: 100%;
   border-radius: 2px;
 }
-.SecaoMapa-texto {
+.SecaoAnuncioMapa-texto {
   color: #999;
   text-align: right;
   padding: 3px;
@@ -170,6 +170,7 @@
   padding: 5px 7px;
   clear: both;
   margin-top: 25px;
+  min-height: 85px;
 }
 .RegrasAnuncio-rotulo {
   font-size: 14px;
@@ -183,3 +184,69 @@
   line-height: 1.2em; 
   font-size: 10px;
 }
+
+/* Formulario */
+.Formulario {
+  position: relative;
+  width:240px;
+  height:400px;
+  padding:0;
+  font-family: 'Roboto';
+  overflow:hidden;  
+  background: #FFF;
+  overflow-y: scroll; 
+}
+
+/* Formulario-Cabecalho */
+.Formulario-Cabecalho {
+  width:220px;
+  padding: 15px;
+  font-size:15px;
+  position:relative;
+  background:#11B1C2;
+  color:#fff;
+  text-align: left;
+  line-height: 0.3em;
+  font-weight: 100;
+}
+.Formulario-Cabecalho-valor {
+  font-weight: 900;
+}
+
+/* Formulario-linha */
+.Formulario-linha {
+  background: #a9a9a9;
+  width: 80%;
+  margin: 0px auto;
+  /*margin-top: -20px;*/
+  height: 1px;
+}
+
+/* SecoesFormulario */
+.SecoesFormulario {
+  margin: 10px;
+  min-height: 162px;
+}
+
+/* CamposFormulario */
+.CamposFormulario-titulo {
+  text-align: left;
+  font-size: 12px;
+  color: #333;
+}
+.CamposFormulario-campoTitulo {
+  text-align: left;
+  font-size: 10px;
+  color: #11B1C2;
+  margin-bottom: 0px; 
+}
+.CamposFormulario-campoInput {
+  border: none;
+  border-bottom: 1px solid #555;
+  width: 100%;
+}
+.CamposFormulario-campoInput:focus {
+  border-bottom: 1px solid #11B1C2;
+  outline: none
+}
+
