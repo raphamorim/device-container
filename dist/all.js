@@ -304,7 +304,7 @@ var SecaoAnuncioDetalhamento = React.createClass({
         detalhe,
         React.createElement(
           "div",
-          { className: "SecaoDetalhamento-descricao" },
+          { className: "SecaoAnuncioDetalhamento-descricao" },
           linha.descricao
         )
       ));

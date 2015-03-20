@@ -27,7 +27,7 @@ var SecaoAnuncioDetalhamento = React.createClass({
         detalhe = <div className="SecaoAnuncioDetalhamento-detalhe">{linha.detalhe}</div>;
       }
 
-      lines.push(<div className="SecaoAnuncioDetalhamento-linha">{detalhe}<div className="SecaoDetalhamento-descricao" >{linha.descricao}</div></div>)
+      lines.push(<div className="SecaoAnuncioDetalhamento-linha">{detalhe}<div className="SecaoAnuncioDetalhamento-descricao" >{linha.descricao}</div></div>)
     });
     return (
       <div className="SecaoAnuncioDetalhamento">
