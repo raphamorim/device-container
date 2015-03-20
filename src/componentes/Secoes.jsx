@@ -10,7 +10,6 @@ var SecoesAnuncio = React.createClass({
           }
       });
     }
-
     return (
       <div className="SecoesAnuncio">
         {rows}
@@ -30,7 +29,6 @@ var SecaoAnuncioDetalhamento = React.createClass({
 
       lines.push(<div className="SecaoAnuncioDetalhamento-linha">{detalhe}<div className="SecaoDetalhamento-descricao" >{linha.descricao}</div></div>)
     });
-   
     return (
       <div className="SecaoAnuncioDetalhamento">
         <h3 className="SecaoAnuncioDetalhamento-rotulo">{this.props.secao.rotulo}</h3>

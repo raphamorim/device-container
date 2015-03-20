@@ -16,7 +16,6 @@ var Midias = React.createClass({
     if (this.props.midias && this.props.midias.length) {
       midias = <img onClick={this.proximaMidia} src={'http://mobdiq.craft.dev:81/' + this.props.midias[this.state.midia].src['2x']}/>;
     }
-
     return (
         <div className="Midias">
 			     {midias}

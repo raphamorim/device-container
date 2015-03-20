@@ -16,7 +16,6 @@ var SecoesFormulario = React.createClass({
           rows.push(<CamposFormulario campos={secao.campos} />);
       });
     }
-
     return (
       <div className="SecoesFormulario">
         {rows}
@@ -33,17 +32,16 @@ var CamposFormulario = React.createClass({
           if (campo.tipo === 'paragrafo') {
             rows.push(<h2 className="CamposFormulario-titulo">{campo.html}</h2>);
           } else if (campo.tipo === 'texto') {
-            rows.push(<div className="CamposFormulario-campo"><h3 className="CamposFormulario-campoTitulo">{campo.rotulo}</h3><input className="CamposFormulario-campoInput" id={campo.id} type='text' /></div>)
+            rows.push(<CampoFormularioInput campo={campo}/>)
           } else if (campo.tipo === 'telefone') {
-            rows.push(<div className="CamposFormulario-campo"><h3 className="CamposFormulario-campoTitulo">{campo.rotulo}</h3><input className="CamposFormulario-campoInput" id={campo.id} type='text' /></div>)
+            rows.push(<CampoFormularioInput campo={campo} tipo='telefone'/>)
           } else if (campo.tipo === 'email') {
-            rows.push(<div className="CamposFormulario-campo"><h3 className="CamposFormulario-campoTitulo">{campo.rotulo}</h3><input className="CamposFormulario-campoInput" id={campo.id} type='email' /></div>)
+            rows.push(<CampoFormularioInput campo={campo} tipo='email'/>)
           } else if (campo.tipo === 'opcoes') {
-            rows.push(<div className="CamposFormulario-campo"><h3 className="CamposFormulario-campoTitulo">{campo.rotulo}</h3></div>)
+            rows.push(<CampoFormularioOpcoes campo={campo}/>)
           }
       });
     }
-
     return (
       <div className="CamposFormulario">
         {rows}
@@ -52,6 +50,38 @@ var CamposFormulario = React.createClass({
   }
 });
 
+var CampoFormularioInput = React.createClass({
+  render: function() {
+    var tipo = this.props.tipo || 'texto';
+    var inputType = tipo === 'email' ? tipo : 'text';
+    return (
+      <div className="CampoFormularioInput CampoFormularioInput--tipo-{{tipo}}">
+        <h3 className="CamposFormularioInput-titulo">{this.props.campo.rotulo}</h3>
+        <input className="CampoFormularioInput-input" id={this.props.campo.id} type={{inputType}} />
+      </div>
+    );
+  }
+});
+
+var CampoFormularioOpcoes = React.createClass({
+  render: function() {
+    var options = [];
+    if (this.props.campo.opcoes && this.props.campo.opcoes.length) {
+      this.props.campo.opcoes.forEach(function(opcao) {
+        options.push(<option value="{opcao.valor}">{opcao.rotulo}</option>)
+      });
+    }
+    return (
+      <div className="CampoFormularioOpcoes">
+        <h2 className="CampoFormularioOpcoes-titulo">{this.props.campo.rotulo}</h2>
+        <select className="CampoFormularioOpcoes-select">
+          <option value="" selected></option>
+          {options}
+        </select>
+      </div>
+    );
+  }
+});
 
 var Formulario = React.createClass({
   render: function() {

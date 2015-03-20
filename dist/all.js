@@ -83,7 +83,6 @@ var SecoesFormulario = React.createClass({
         rows.push(React.createElement(CamposFormulario, { campos: secao.campos }));
       });
     }
-
     return React.createElement(
       "div",
       { className: "SecoesFormulario" },
@@ -106,56 +105,71 @@ var CamposFormulario = React.createClass({
             campo.html
           ));
         } else if (campo.tipo === "texto") {
-          rows.push(React.createElement(
-            "div",
-            { className: "CamposFormulario-campo" },
-            React.createElement(
-              "h3",
-              { className: "CamposFormulario-campoTitulo" },
-              campo.rotulo
-            ),
-            React.createElement("input", { className: "CamposFormulario-campoInput", id: campo.id, type: "text" })
-          ));
+          rows.push(React.createElement(CampoFormularioInput, { campo: campo }));
         } else if (campo.tipo === "telefone") {
-          rows.push(React.createElement(
-            "div",
-            { className: "CamposFormulario-campo" },
-            React.createElement(
-              "h3",
-              { className: "CamposFormulario-campoTitulo" },
-              campo.rotulo
-            ),
-            React.createElement("input", { className: "CamposFormulario-campoInput", id: campo.id, type: "text" })
-          ));
+          rows.push(React.createElement(CampoFormularioInput, { campo: campo, tipo: "telefone" }));
         } else if (campo.tipo === "email") {
-          rows.push(React.createElement(
-            "div",
-            { className: "CamposFormulario-campo" },
-            React.createElement(
-              "h3",
-              { className: "CamposFormulario-campoTitulo" },
-              campo.rotulo
-            ),
-            React.createElement("input", { className: "CamposFormulario-campoInput", id: campo.id, type: "email" })
-          ));
+          rows.push(React.createElement(CampoFormularioInput, { campo: campo, tipo: "email" }));
         } else if (campo.tipo === "opcoes") {
-          rows.push(React.createElement(
-            "div",
-            { className: "CamposFormulario-campo" },
-            React.createElement(
-              "h3",
-              { className: "CamposFormulario-campoTitulo" },
-              campo.rotulo
-            )
-          ));
+          rows.push(React.createElement(CampoFormularioOpcoes, { campo: campo }));
         }
       });
     }
-
     return React.createElement(
       "div",
       { className: "CamposFormulario" },
       rows
+    );
+  }
+});
+
+var CampoFormularioInput = React.createClass({
+  displayName: "CampoFormularioInput",
+
+  render: function render() {
+    var tipo = this.props.tipo || "texto";
+    var inputType = tipo === "email" ? tipo : "text";
+    return React.createElement(
+      "div",
+      { className: "CampoFormularioInput CampoFormularioInput--tipo-{{tipo}}" },
+      React.createElement(
+        "h3",
+        { className: "CamposFormularioInput-titulo" },
+        this.props.campo.rotulo
+      ),
+      React.createElement("input", { className: "CampoFormularioInput-input", id: this.props.campo.id, type: { inputType: inputType } })
+    );
+  }
+});
+
+var CampoFormularioOpcoes = React.createClass({
+  displayName: "CampoFormularioOpcoes",
+
+  render: function render() {
+    var options = [];
+    if (this.props.campo.opcoes && this.props.campo.opcoes.length) {
+      this.props.campo.opcoes.forEach(function (opcao) {
+        options.push(React.createElement(
+          "option",
+          { value: "{opcao.valor}" },
+          opcao.rotulo
+        ));
+      });
+    }
+    return React.createElement(
+      "div",
+      { className: "CampoFormularioOpcoes" },
+      React.createElement(
+        "h2",
+        { className: "CampoFormularioOpcoes-titulo" },
+        this.props.campo.rotulo
+      ),
+      React.createElement(
+        "select",
+        { className: "CampoFormularioOpcoes-select" },
+        React.createElement("option", { value: "", selected: true }),
+        options
+      )
     );
   }
 });
@@ -218,7 +232,6 @@ var Midias = React.createClass({
     if (this.props.midias && this.props.midias.length) {
       midias = React.createElement("img", { onClick: this.proximaMidia, src: "http://mobdiq.craft.dev:81/" + this.props.midias[this.state.midia].src["2x"] });
     }
-
     return React.createElement(
       "div",
       { className: "Midias" },
@@ -262,7 +275,6 @@ var SecoesAnuncio = React.createClass({
         }
       });
     }
-
     return React.createElement(
       "div",
       { className: "SecoesAnuncio" },
@@ -297,7 +309,6 @@ var SecaoAnuncioDetalhamento = React.createClass({
         )
       ));
     });
-
     return React.createElement(
       "div",
       { className: "SecaoAnuncioDetalhamento" },

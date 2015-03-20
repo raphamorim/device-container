@@ -228,25 +228,42 @@
   min-height: 162px;
 }
 
-/* CamposFormulario */
+/* CamposFormularios */
 .CamposFormulario-titulo {
   text-align: left;
   font-size: 12px;
   color: #333;
 }
-.CamposFormulario-campoTitulo {
+
+/* CampoFormularioInput*/
+.CamposFormularioInput-titulo {
   text-align: left;
   font-size: 10px;
   color: #11B1C2;
   margin-bottom: 0px; 
 }
-.CamposFormulario-campoInput {
+.CampoFormularioInput-input {
   border: none;
   border-bottom: 1px solid #555;
   width: 100%;
 }
-.CamposFormulario-campoInput:focus {
+.CampoFormularioInput-input:focus {
   border-bottom: 1px solid #11B1C2;
   outline: none
 }
 
+/* CampoFormularioOpcoes */
+.CampoFormularioOpcoes-titulo {
+  text-align: left;
+  font-size: 10px;
+  color: #11B1C2;
+  margin-bottom: 0px; 
+}
+.CampoFormularioOpcoes-select {
+  border-radius: 0px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #555;
+  width: 100%;
+  box-shadow: none;
+}
